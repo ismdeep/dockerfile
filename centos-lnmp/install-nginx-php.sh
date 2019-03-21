@@ -8,7 +8,7 @@ MCRYPT_VERSION=2.6.8
 PCRE_VERSION=8.39
 ZLIB_VERSION=1.2.11
 OPENSSL_VERSION=1.1.0b
-NGINX_VERSION=1.15.8
+NGINX_VERSION=1.15.9
 
 yum -y install gcc gcc-c++ automake autoconf libtool make wget
 yum -y install libmcrypt-devel mhash-devel libxslt-devel \
@@ -68,7 +68,7 @@ tar -zxvf openssl-$OPENSSL_VERSION.tar.gz
 
 # install nginx
 cd /usr/local/src
-axel -n 10 http://download.ismdeep.com/software/linux/centos-php-nginx-packages/nginx-$NGINX_VERSION.tar.gz
+axel -n 10 https://nginx.org/download/nginx-$NGINX_VERSION.tar.gz
 tar -zxvf nginx-$NGINX_VERSION.tar.gz
 cd nginx-$NGINX_VERSION
 
