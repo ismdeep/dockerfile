@@ -5,6 +5,10 @@ PHP_VERSION=5.6.40
 LIBMCRYPT_VERSION=2.5.8
 MHASH_VERSION=0.9.9.9
 MCRYPT_VERSION=2.6.8
+PCRE_VERSION=8.39
+ZLIB_VERSION=1.2.11
+OPENSSL_VERSION=1.1.0b
+NGINX_VERSION=1.15.8
 
 yum -y install gcc gcc-c++ automake autoconf libtool make wget
 yum -y install libmcrypt-devel mhash-devel libxslt-devel \
@@ -43,30 +47,30 @@ make && make install
 
 # install PCRE
 cd /usr/local/src
-axel -n 10 http://download.ismdeep.com/software/linux/centos-php-nginx-packages/pcre-8.39.tar.gz
-tar -zxvf pcre-8.39.tar.gz
-cd pcre-8.39
+axel -n 10 http://download.ismdeep.com/software/linux/centos-php-nginx-packages/pcre-$PCRE_VERSION.tar.gz
+tar -zxvf pcre-$PCRE_VERSION.tar.gz
+cd pcre-$PCRE_VERSION
 ./configure
 make && make install
 
 # install zlib
 cd /usr/local/src
-axel -n 10 http://download.ismdeep.com/software/linux/centos-php-nginx-packages/zlib-1.2.11.tar.gz
-tar -zxvf zlib-1.2.11.tar.gz
-cd zlib-1.2.11
+axel -n 10 http://download.ismdeep.com/software/linux/centos-php-nginx-packages/zlib-$ZLIB_VERSION.tar.gz
+tar -zxvf zlib-$ZLIB_VERSION.tar.gz
+cd zlib-$ZLIB_VERSION
 ./configure
 make && make install
 
 # install ssl
 cd /usr/local/src
-axel -n 10 http://download.ismdeep.com/software/linux/centos-php-nginx-packages/openssl-1.1.0b.tar.gz
-tar -zxvf openssl-1.1.0b.tar.gz
+axel -n 10 http://download.ismdeep.com/software/linux/centos-php-nginx-packages/openssl-$OPENSSL_VERSION.tar.gz
+tar -zxvf openssl-$OPENSSL_VERSION.tar.gz
 
 # install nginx
 cd /usr/local/src
-axel -n 10 http://download.ismdeep.com/software/linux/centos-php-nginx-packages/nginx-1.15.8.tar.gz
-tar -zxvf nginx-1.15.8.tar.gz
-cd nginx-1.15.8
+axel -n 10 http://download.ismdeep.com/software/linux/centos-php-nginx-packages/nginx-$NGINX_VERSION.tar.gz
+tar -zxvf nginx-$NGINX_VERSION.tar.gz
+cd nginx-$NGINX_VERSION
 
 # add user and usergroup for nginx
 groupadd -r nginx
@@ -90,9 +94,9 @@ useradd -r -g nginx nginx
 --http-fastcgi-temp-path=/var/tmp/nginx/fcgi/ \
 --http-uwsgi-temp-path=/var/tmp/nginx/uwsgi \
 --http-scgi-temp-path=/var/tmp/nginx/scgi \
---with-pcre=/usr/local/src/pcre-8.39 \
---with-zlib=/usr/local/src/zlib-1.2.11 \
---with-openssl=/usr/local/src/openssl-1.1.0b
+--with-pcre=/usr/local/src/pcre-$PCRE_VERSION \
+--with-zlib=/usr/local/src/zlib-$ZLIB_VERSION \
+--with-openssl=/usr/local/src/openssl-$OPENSSL_VERSION
 make && make install
 
 # /usr/local/nginx
