@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:18.04
 
 MAINTAINER ismdeep <ismdeep@protonmail.com>
 
