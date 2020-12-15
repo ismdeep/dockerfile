@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-MAINTAINER ismdeep <ismdeep@protonmail.com>
+MAINTAINER L. Jiang <l.jiang.1024@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
